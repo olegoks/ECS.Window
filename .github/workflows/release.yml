@@ -1,0 +1,52 @@
+name: Release Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+      
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Debug - show current version line
+        run: |
+          echo "=== Current version line ==="
+          grep -n "Version" ECS.Window.ecs_package
+          echo "=== Full file ==="
+          cat ECS.Window.ecs_package
+      
+      - name: Inject version into manifest
+        run: |
+            sed -i -E 's/(^\s*Version\s*=\s*)"[^"]*"/\1"${{ steps.get_version.outputs.VERSION }}"/' ECS.Window.ecs_package
+            echo "=== Updated manifest ==="
+            cat ECS.Window.ecs_package
+
+      - name: Create package archive
+        run: |
+          zip -r ${{ github.event.repository.name }}-${{ steps.get_version.outputs.VERSION }}.zip \
+            ECS.Window.ecs_package \
+            Window/
+
+      - name: Verify archive
+        run: unzip -l ${{ github.event.repository.name }}-${{ steps.get_version.outputs.VERSION }}.zip
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ github.event.repository.name }}-${{ steps.get_version.outputs.VERSION }}.zip
+            ECS.Window.ecs_package
+          name: "Release ${{ steps.get_version.outputs.VERSION }}"
+          tag_name: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

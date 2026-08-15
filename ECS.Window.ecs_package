@@ -1,0 +1,15 @@
+Package = {
+    Name = "Window",
+    Version = "0.0.0-dev",
+    FrameworkVersion = "1.0.0",
+    Dependecies = {
+        {
+            Name = "Common",
+            Version = "latest"
+        }
+    },
+    Modules = {
+        { "Window/Window.ecs_module" }
+    }
+
+}
