@@ -1,5 +1,5 @@
 #pragma once
-#include <UI\KeyboardInput\auto_OksEngine.KeyboardInputSystems.hpp>
+#include <Window\KeyboardInput\auto_OksEngine.KeyboardInputSystems.hpp>
 
 namespace Input {
 	void CreateKeyboardEvents::Update(ECS2::Entity::Id entity0id, const Input::HandleKeyboardEvents* handleKeyboardEvents0) {

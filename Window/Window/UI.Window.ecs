@@ -16,7 +16,18 @@ UINamespace = {
         HandleComponent = {
             serializable = false,
             fields = {
-                { type = "class GLFWwindow*", name = "glfwWindowPtr" }
+                { type = "Common::Handle", name = "glfwWindowPtr" }
+            }
+        },
+        TitleComponent = {
+            fields = {
+                { type = "std::string", name = "text" }
+            }
+        },
+        SizeComponent = {
+            fields = {
+                { type = "Common::UInt64", name = "width" },
+                { type = "Common::UInt64", name = "height" }
             }
         },
         --Initialize components.
@@ -34,23 +45,13 @@ UINamespace = {
                     { type = "std::vector<ECS2::Entity::Id>", name = "ids" }
                 }
             },
-            TitleComponent = {
-                fields = {
-                    { type = "std::string", name = "text" }
-                }
-            },
-            SizeComponent = {
-                fields = {
-                    { type = "Common::UInt64", name = "width" },
-                    { type = "Common::UInt64", name = "height" }
-                }
-            },
+
             ConfigArchetype = {
                 components = {
                     "Config::Tag",
                     "Window::EntityId",
-                    "Config::Title",
-                    "Config::Size"
+                    "Title",
+                    "Size"
                 }
             }
         },
@@ -58,6 +59,8 @@ UINamespace = {
             components = {
                 "Window::Tag",
                 "Window::Handle",
+                "Window::Size",
+                "Window::Title",
                 "Window::Config::EntityId"
             },
             archetypes = {

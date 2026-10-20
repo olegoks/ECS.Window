@@ -1,5 +1,5 @@
 #pragma once
-#include <UI\CursorInput\auto_OksEngine.CursorInputSystems.hpp>
+#include <Window\CursorInput\auto_OksEngine.CursorInputSystems.hpp>
 
 namespace Input
 {

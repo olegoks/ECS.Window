@@ -1,5 +1,5 @@
 #pragma once
-#include <UI\MouseInput\auto_OksEngine.MouseInputSystems.hpp>
+#include <Window\MouseInput\auto_OksEngine.MouseInputSystems.hpp>
 
 
 void CreateMouseEvents::Update(ECS2::Entity::Id entity0id, const HandleMouseEvents* handleMouseInput0) {

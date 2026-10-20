@@ -1,15 +1,15 @@
 #pragma once
-#include <UI\MainWindow\auto_OksEngine.MainWindow.hpp>
-#include <UI/KeyboardInput/auto_OksEngine.KeyboardInput.hpp>
-#include <UI/MouseInput/auto_OksEngine.MouseInput.hpp>
-#include <UI/CursorInput/auto_OksEngine.CursorInput.hpp>
+#include <Window\MainWindow\auto_OksEngine.MainWindow.hpp>
+#include <Window/KeyboardInput/auto_OksEngine.KeyboardInput.hpp>
+#include <Window/MouseInput/auto_OksEngine.MouseInput.hpp>
+#include <Window/CursorInput/auto_OksEngine.CursorInput.hpp>
 
 #include <Lua.Context.hpp>
 
 
 #undef CreateWindow
 
-void CreateMainWindow::Update(ECS2::Entity::Id entity0id, const Config::Tag* config0, const LuaScript* luaScript0) {
+void CreateMainWindow::Update(ECS2::Entity::Id entity0id, const Config::Tag* config0, const Behaviour::LuaScript* luaScript0) {
 
 
 	::Lua::Context context;
