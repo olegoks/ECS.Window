@@ -4,7 +4,7 @@
 #include <Window/MouseInput/auto_OksEngine.MouseInput.hpp>
 #include <Window/CursorInput/auto_OksEngine.CursorInput.hpp>
 
-#include <Lua.Context.hpp>
+#include <Common/Lua/Lua.Context.hpp>
 
 
 #undef CreateWindow
